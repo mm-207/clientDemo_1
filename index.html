@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+  <select  name="language" id="language">
+		<option value="no">Norsk</option>
+		<option value="en">English</option>
+	<select>
+	
+	<div data-language-key="whelcome">
+		placeholder text
+	</div>
+	
+	<div data-language-key="noe">
+		placeholder text
+	</div>
+
+	
+    <img src=".." alt="hmmmmm" data-language-key="noe" />
+	
+
+    <script type="module">
+
+        import {translate, setLang} from "./tools.mjs"
+
+        const imagesToTranslate = document.querySelectorAll("img[data-language-key],[alt]");
+        translate(imagesToTranslate, "alt");
+
+        const textElementsToTranslarte = document.querySelectorAll("[data-language-key]:not([alt])");
+        translate(textElementsToTranslarte,"innerHTML");
+
+        document.getElementById("language").onselectionchange = (evt)=>{
+            setLang(evt.target.value);
+        }
+
+
+    </script>
+
+</body>
+</html>
